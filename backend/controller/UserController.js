@@ -1,13 +1,15 @@
 import expressAsyncHandler from "express-async-handler";
 
-
 //register
 const register=expressAsyncHandler(async(req,res)=>{
         console.log('REGISTER')
+        res.status(500).json({ message: "You are in register"});
 })
 
 const Login=expressAsyncHandler(async(req,res)=>{
-    console.log('LogIn')
+    console.log('REGISTER')
+    console.log(req.body)
+    res.status(200).json({ message: "You are in register"});
 })
 
 const logout=expressAsyncHandler(async(req,res)=>{
