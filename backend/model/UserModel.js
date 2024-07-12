@@ -22,6 +22,10 @@ const UserSchema=mongoose.Schema({
 UserSchema.pre('save',async function(){
     this.password=await bcrypt.hash(this.password,12)
 })
+
+UserSchema.methods.checkPassword= async function(Entered){
+    return await bcrypt.compare(Entered,this.password)
+}
 const User=mongoose.model('User',UserSchema)
 
 export default User;
