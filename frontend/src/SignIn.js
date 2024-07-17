@@ -17,14 +17,6 @@ export default function SignIn() {
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
 
-  // const {userInfo}=useSelector((state)=>state.auth1)
-
-  // useEffect(()=>{
-  //   if (userInfo){
-  //     navigate('/login')
-  //   }
-  // },[navigate,userInfo]);
-
       const SubmitHandle=async(e)=>{
         e.preventDefault();
         try{

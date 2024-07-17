@@ -19,9 +19,14 @@ const UserSchema=mongoose.Schema({
     timestamps:true
 })
 
-UserSchema.pre('save',async function(){
-    this.password=await bcrypt.hash(this.password,12)
-})
+UserSchema.pre('save', async function(next) {
+    if (!this.isModified('password')) {
+      next();
+    }
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+  });
+  
 
 UserSchema.methods.checkPassword= async function(Entered){
     return await bcrypt.compare(Entered,this.password)

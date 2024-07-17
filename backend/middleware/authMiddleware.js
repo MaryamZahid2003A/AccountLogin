@@ -12,7 +12,7 @@ const protect=expressAsyncHandler(async(req,res,next)=>{
             next()
         }
         else{
-                res.status(500).json({
+                res.status(400).json({
                     message:"Unauthorized User : Invalid Token"
                 })
         }
